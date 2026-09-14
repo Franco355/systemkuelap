@@ -20,7 +20,7 @@
 .github
 .claude
 .agents
-.sql
+*.sql
 Homestead.json
 Homestead.yaml
 npm-debug.log
