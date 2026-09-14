@@ -11,4 +11,6 @@ export type NavItem = {
     href: NonNullable<InertiaLinkProps['href']>;
     icon?: LucideIcon | null;
     isActive?: boolean;
+    /** Ítems hijos: cuando están presentes, el ítem se muestra como un submenú desplegable en vez de un enlace directo. */
+    items?: NavItem[];
 };

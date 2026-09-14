@@ -1,5 +1,5 @@
 import { Link, router } from '@inertiajs/react';
-import { BookOpen, Calendar, FolderGit2, LayoutGrid } from 'lucide-react';
+import { BookOpen, Building2, Calendar, FolderGit2, Images, LayoutGrid, LogOut, Users } from 'lucide-react';
 import AppLogo from '@/components/app-logo';
 import { NavFooter } from '@/components/nav-footer';
 import { NavMain } from '@/components/nav-main';
@@ -11,6 +11,7 @@ import {
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
+    useSidebar,
 } from '@/components/ui/sidebar';
 import { useMobileNavigation } from '@/hooks/use-mobile-navigation';
 import { dashboard, home, logout } from '@/routes';
@@ -26,6 +27,21 @@ const mainNavItems: NavItem[] = [
         title: 'Eventos',
         href: '/eventos',
         icon: Calendar,
+    },
+    {
+        title: 'Empresa',
+        href: '/empresa',
+        icon: Building2,
+    },
+    {
+        title: 'Miembros',
+        href: '/equipo',
+        icon: Users,
+    },
+    {
+        title: 'Imágenes',
+        href: '/imagenes',
+        icon: Images,
     },
 ];
 
@@ -44,24 +60,18 @@ const footerNavItems: NavItem[] = [
 
 export function AppSidebar() {
     const cleanup = useMobileNavigation();
+    const { isMobile, setOpenMobile } = useSidebar();
 
     const handleLogout = () => {
         cleanup();
+        if (isMobile) setOpenMobile(false);
         router.flushAll();
     };
 
     return (
         <Sidebar collapsible="icon" variant="inset">
             <SidebarHeader>
-                <SidebarMenu>
-                    <SidebarMenuItem>
-                        <SidebarMenuButton size="lg" asChild>
-                            <Link href={dashboard()} prefetch>
-                                <AppLogo />
-                            </Link>
-                        </SidebarMenuButton>
-                    </SidebarMenuItem>
-                </SidebarMenu>
+                <AppLogo />
             </SidebarHeader>
 
             <SidebarContent>
@@ -72,15 +82,19 @@ export function AppSidebar() {
                 <NavFooter items={footerNavItems} className="mt-auto" />
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton asChild>
+                        <SidebarMenuButton
+                            asChild
+                            tooltip={{ children: 'Cerrar sesión' }}
+                            className="text-red-500 hover:text-red-500 data-[state=open]:hover:text-red-500"
+                        >
                             <Link
-                                className="text-red-500 hover:text-red-500 data-[state=open]:hover:text-red-500"
                                 href={logout()}
                                 as="button"
                                 onClick={handleLogout}
                                 data-test="logout-button"
                             >
-                                Cerrar sesión
+                                <LogOut />
+                                <span>Cerrar sesión</span>
                             </Link>
                         </SidebarMenuButton>
                     </SidebarMenuItem>

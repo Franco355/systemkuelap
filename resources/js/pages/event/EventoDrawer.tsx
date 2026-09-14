@@ -65,10 +65,10 @@ export default function EventoDrawer({ evento, onClose, onEdit, onDelete, onCopy
             <aside className="fixed right-0 top-0 bottom-0 z-50 flex flex-col w-full sm:w-[440px] max-w-full bg-white dark:bg-zinc-950 border-l border-zinc-200 dark:border-zinc-800 shadow-2xl overflow-hidden">
 
                 {/* Imagen de cabecera */}
-                <div className="relative h-44 shrink-0 bg-gradient-to-br from-violet-100 to-purple-100 dark:from-violet-950/40 dark:to-purple-950/40">
+                <div className="relative h-44 shrink-0 bg-gradient-to-br from-admin-100 to-admin-200 dark:from-admin-950/40 dark:to-admin-900/40">
                     {evento.image_url
                         ? <img src={evento.image_url} className="w-full h-full object-cover" />
-                        : <div className="w-full h-full flex items-center justify-center text-violet-300"><Ico.Image /></div>}
+                        : <div className="w-full h-full flex items-center justify-center text-admin-300"><Ico.Image /></div>}
                     <button onClick={onClose} className="absolute top-3 right-3 p-1.5 rounded-lg bg-black/40 text-white hover:bg-black/60 cursor-pointer backdrop-blur-sm">
                         <Ico.X />
                     </button>
@@ -81,7 +81,7 @@ export default function EventoDrawer({ evento, onClose, onEdit, onDelete, onCopy
 
                 <div className="flex items-start justify-between gap-3 px-5 py-4 border-b border-zinc-100 dark:border-zinc-800 shrink-0">
                     <div className="min-w-0">
-                        <p className="text-[10px] font-bold text-violet-500 dark:text-violet-400 uppercase tracking-wider">{evento.nom_tipo_evento}</p>
+                        <p className="text-[10px] font-bold text-admin-500 dark:text-admin-400 uppercase tracking-wider">{evento.nom_tipo_evento}</p>
                         <h2 className="text-sm font-black text-zinc-900 dark:text-zinc-100 leading-snug">{evento.nom_evento}</h2>
                     </div>
                     <div className="flex items-center gap-1.5 shrink-0">
@@ -143,10 +143,10 @@ export default function EventoDrawer({ evento, onClose, onEdit, onDelete, onCopy
                     )}
 
                     {evento.link_form_inscripcion && (
-                        <div className="px-4 py-3.5 rounded-xl bg-violet-50 dark:bg-violet-950/20 border border-violet-200 dark:border-violet-800/50">
+                        <div className="px-4 py-3.5 rounded-xl bg-admin-50 dark:bg-admin-950/20 border border-admin-200 dark:border-admin-800/50">
                             <div className="flex items-center justify-between mb-1">
-                                <p className="text-[9px] font-bold uppercase tracking-widest text-violet-600 dark:text-violet-400 flex items-center gap-1.5"><Ico.Link /> Formulario de inscripción</p>
-                                <button onClick={() => onCopyLink(evento.link_form_inscripcion!)} className="text-[10px] font-bold text-violet-600 dark:text-violet-400 hover:underline cursor-pointer flex items-center gap-1">
+                                <p className="text-[9px] font-bold uppercase tracking-widest text-admin-600 dark:text-admin-400 flex items-center gap-1.5"><Ico.Link /> Formulario de inscripción</p>
+                                <button onClick={() => onCopyLink(evento.link_form_inscripcion!)} className="text-[10px] font-bold text-admin-600 dark:text-admin-400 hover:underline cursor-pointer flex items-center gap-1">
                                     <Ico.Copy /> Copiar
                                 </button>
                             </div>

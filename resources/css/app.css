@@ -25,6 +25,22 @@
     --color-kuelap-green-dark: #167a41;
     --color-kuelap-green-soft: #e7f5ec;
 
+    /* Admin panel accent — corporate navy blue used for headers, primary
+       buttons, badges and focus rings across the internal management pages
+       (eventos, empresa, imágenes). Deliberately distinct from the darker
+       --color-kuelap-navy used on the public site. */
+    --color-admin-50: #eef4fa;
+    --color-admin-100: #d8e6f3;
+    --color-admin-200: #b3cce8;
+    --color-admin-300: #82abd6;
+    --color-admin-400: #4f86bd;
+    --color-admin-500: #2f699f;
+    --color-admin-600: #1c4a7a;
+    --color-admin-700: #163f68;
+    --color-admin-800: #123353;
+    --color-admin-900: #0f2943;
+    --color-admin-950: #0a1a2c;
+
     --radius-lg: var(--radius);
     --radius-md: calc(var(--radius) - 2px);
     --radius-sm: calc(var(--radius) - 4px);
@@ -198,7 +214,11 @@ html {
         min-height: 100vh;
         min-height: 100dvh;
         width: 100%;
-        overflow-x: hidden;
+        /* No repetir overflow-x:hidden aquí (ya está en <html>): la spec CSS
+           fuerza el overflow-y de <body> a "auto" cuando solo x es no-visible,
+           convirtiéndolo en un segundo contenedor de scroll donde cualquier
+           `position: sticky` (p. ej. la cabecera del sidebar) queda pegado a
+           un <body> que nunca se desplaza, en vez de a la ventana real. */
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
